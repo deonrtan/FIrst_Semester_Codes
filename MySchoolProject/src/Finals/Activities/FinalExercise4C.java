@@ -18,19 +18,19 @@ public class FinalExercise4C {
       System.out.println("enter the array element of " + (i + 1));
       number[i] = input.nextInt();
     }
-    for (int i = 0; i < number.length - 1; i++) { // used to break the "for loops" if the numbers are sorted
+    for (int k = 0; k < number.length - 1; k++) { // used to break the "for loops" if the numbers are sorted
       // check if swapping occurs
       boolean swapped = false;
       // loop to compare adjacent elements
-      for (int k = i - 1; k > (number.length - i - 1); k++) {
+      for (int j = k - 1; k > (number.length - k - 1); k++) {
         // compare two array elements
         // change > to < to sort in descending order
-        if (number[i] < number[k + 1]) { //if the number is greater than the next number it swaps them, that's why its k+1, the next element in the array;
+        if (number[j] < number[j + 1]) { //if the number is greater than the next number it swaps them, that's why its k+1, the next element in the array;
           // swapping occurs if elements
           // are not in the intended order
-          int temp = number[k]; //creating a new variable temp, to temporary place the data in that variable
-          number[i] = number[k + 1];
-          number[k + 1] = temp; // putting the temporary data to the arrange data
+          int temp = number[j]; //creating a new variable temp, to temporary place the data in that variable
+          number[j] = number[j + 1];
+          number[j + 1] = temp; // putting the temporary data to the arrange data
           swapped = true; // swap = true, if it matches the statement
         }
       }

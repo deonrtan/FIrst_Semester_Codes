@@ -33,7 +33,7 @@ public class FinalExercise4B {
           // are not in the intended order
           int temp = number[k]; //creating a new variable temp, to temporary place the data in that variable
           number[k] = number[k + 1];
-          number[k + 1] = temp; // putting the temporary data to the arrange data
+          number[k + 1] = temp; // putting the temporary data to the arrange data 
           swapped = true; // swap = true, if it matches the statement
         }
       }
