@@ -1,4 +1,4 @@
-package Finals.Activities;
+package Finals.done;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -34,5 +34,7 @@ public class FinalExercise4C {
     for (int i : arr1) {
       System.out.print(i + " ");
     }
+  }
+}
   }
 }
