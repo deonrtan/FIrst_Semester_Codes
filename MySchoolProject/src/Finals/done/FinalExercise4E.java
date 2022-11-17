@@ -6,8 +6,6 @@ import java.util.Scanner;
 //Bubble sort algorithm for String, sorting in lexographic ordering (i.e Alphabetical Ordering)
 public class FinalExercise4E {
 
-  static int MAX = 100;
-
   public static void sortStrings(String[] arr, int n) {
     String temp;
 
