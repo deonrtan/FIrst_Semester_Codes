@@ -1,6 +1,7 @@
 package Finals.Activities;
 
 import java.lang.*;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class GradeUsingArrays2 {
