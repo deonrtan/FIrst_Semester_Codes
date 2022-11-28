@@ -1,4 +1,4 @@
-package Midterm.exercises;
+package Midterm.Done;
 
 /*
  * Test the program given below with different possible input values. Note that the program allows
