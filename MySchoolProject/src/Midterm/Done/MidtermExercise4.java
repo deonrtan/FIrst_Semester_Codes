@@ -42,7 +42,9 @@ public class MidtermExercise4 {
       products[3] = "long bond paper";
       products[4] = "pad paper";
       do {
-        System.out.print("Product: ");
+        System.out.println(
+          "Product: 'pen' , 'pencil' , 'short bond paper' ,  'long bond paper' , 'pad paper' "
+        );
         pName = kbd.nextLine();
         if (pName.equals(products[0])) {
           System.out.println("You have chosen pen");

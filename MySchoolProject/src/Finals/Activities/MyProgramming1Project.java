@@ -336,6 +336,7 @@ public class MyProgramming1Project {
     } while (choice != 16);
   } // end of mathSolver method
 
+
   //------------------------------ MATH ROUTINES FUNCTION ------------------------------\\
   //1. determine whether an integer is an odd or even \\
   public static String detOddEven(int number) {
