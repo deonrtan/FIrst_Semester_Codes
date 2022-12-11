@@ -902,8 +902,7 @@ public class MyProgramming1Project {
     // Introduce the program by invoking the showIntroduction method
     showIntroductionTax();
 
-    // Read the taxable income from the keyboard by invoking the readTaxableIncome
-    // method
+    // Read the taxable income from the keyboard by invoking the readTaxableIncome method
     taxableIncome = readTaxableIncome();
     // Compute the tax due by invoking the computeTaxDue method
     taxDue = computeTaxDue(determineBracket(taxableIncome), taxableIncome);
@@ -912,9 +911,7 @@ public class MyProgramming1Project {
     System.exit(0);
   } // end of main method
 
-  /**
-   * shows statements that introduce the application on the output screen
-   */
+  //shows statements that introduce the application on the output screen
   public static void showIntroductionTax() {
     System.out.println("Hypothetical Tax Computation Program");
     System.out.println("------------------------------------");
@@ -925,9 +922,6 @@ public class MyProgramming1Project {
     System.out.println();
   } // end of showIntroduction methods
 
-  /**
-   * returns a taxable income amount read from the keyboard]
-   */
   public static double readTaxableIncome() {
     Scanner input = new Scanner(System.in);
     double income = 0.0;
@@ -939,14 +933,6 @@ public class MyProgramming1Project {
     return income;
   } // end of readTaxableIncome method
 
-  /**
-returns the bracket corresponding to a given taxable income based on the following rule
-If taxable income is then bracket is
-<= 25,000.00 1
-> 25,000.00 but <= 125,000.00 2
-> 125,000.00 but <= 525,000.00 3
-> 525,000.00 4
-*/
   public static int determineBracket(double taxableIncome) { // ITEM 4
     int bracket = 0;
     if (taxableIncome <= 25000.00) bracket = 1; else if (
@@ -956,15 +942,6 @@ If taxable income is then bracket is
     return bracket;
   } // end of determineBracket method
 
-  /**
-* returns the tax amount due corresponding to a given pair of bracket and taxable income
-based on the following rule
-If bracket of income is then tax due is
-1 4,000.00
-2 4,000.00 + 8% (taxable income - 25,000.00)
-3 12,000.00 + 10% (taxable income - 125,000.00)
-4 52,000.00 + 12% (taxable income - 525,000.00)
-*/
   public static double computeTaxDue(int bracket, double taxableIncome) { // ITEM 5
     double taxDue = 0.0;
     switch (bracket) {
@@ -983,13 +960,10 @@ If bracket of income is then tax due is
       default:
         taxDue = 0.00;
     }
-    return taxDue; // ITEM 6
+    return taxDue;
   } // end of computeTaxDue method
 
-  /**
-   * displays a given taxable income and the corresponding tax amount on the
-   * output screen
-   */
+  //displays a given taxable income and the corresponding tax amount on the output screen
   public static void showResults(double taxableIncome, double taxDue) { // ITEM 7
     System.out.println();
     System.out.printf("%-20s%15.2f%n", "Taxable Income: ", taxableIncome);
@@ -1047,7 +1021,6 @@ If bracket of income is then tax due is
         System.out.println("The meter reading cannot me negative.");
       }
     } while (previousReading < 0);
-    // insert statements below…
     do {
       System.out.print("Enter the meter reading this month: ");
       presentReading = kbd.nextInt();
