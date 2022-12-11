@@ -648,7 +648,23 @@ public class MyProgramming1Project {
     number = new int[n];
     grade = new int[n];
     student = new String[n];
+    StudentNameGradeInput(student, grade, number);
+    balloonSortGrade(student, grade, n);
+  }
 
+  private static void printTable(int[] grades, String[] students) {
+    for (int i = 0; i < students.length; i++) {
+      System.out.println(students[i] + " : " + "grade : " + grades[i]);
+    }
+    System.out.println("\n");
+  }
+
+  private static void StudentNameGradeInput(
+    String[] student,
+    int[] grade,
+    int[] number
+  ) {
+    Scanner input = new Scanner(System.in);
     for (int i = 0; i < number.length; i++) {
       System.out.println("enter the name of student " + (i + 1));
       student[i] = input.nextLine();
@@ -657,15 +673,6 @@ public class MyProgramming1Project {
       System.out.println("Enter the grade of student " + (j + 1));
       grade[j] = input.nextInt();
     }
-
-    balloonSortGrade(student, grade, n);
-  }
-
-  private static void printTable(int[] grades, String[] students) {
-    for (int i = 0; i < students.length; i++) {
-      System.out.print(students[i] + " : " + "grade : " + grades[i]);
-    }
-    System.out.println("\n");
   }
 
   public static void balloonSortGrade(String b[], int a[], int n) {
@@ -693,7 +700,6 @@ public class MyProgramming1Project {
           higherOrLower();
           System.out.println();
           System.out.print("press enter to continue...");
-
           keyboard.nextLine();
           break;
         case 2:
@@ -706,7 +712,9 @@ public class MyProgramming1Project {
           // TO DO
           break;
         case 5:
-          // TO DO
+          incomeTaxComputation();
+          System.out.println("Press enter to continue...");
+          keyboard.nextLine();
           break;
         case 6:
           insectPopulationGrowthRate();
@@ -717,7 +725,9 @@ public class MyProgramming1Project {
 
           break;
         case 7:
-          // TO DO
+          waterBillComputation();
+          System.out.println("Press enter to continue...");
+          keyboard.nextLine();
           break;
         case 8:
           // TO DO
@@ -726,7 +736,7 @@ public class MyProgramming1Project {
           // TO DO
           break;
         case 10:
-        // TO DO
+          showMainMenu();
       } // end of cases
     } while (choice != 10);
   } // end of miscellaneousProcesses method
@@ -822,6 +832,105 @@ public class MyProgramming1Project {
   //--------4. Interest of Money Invested--------\\
 
   //--------5. Income Tax Computation--------\\
+  public static void incomeTaxComputation() {
+    double taxableIncome;
+    double taxDue;
+    // Introduce the program by invoking the showIntroduction method
+    showIntroductionTax();
+
+    // Read the taxable income from the keyboard by invoking the readTaxableIncome
+    // method
+    taxableIncome = readTaxableIncome();
+    // Compute the tax due by invoking the computeTaxDue method
+    taxDue = computeTaxDue(determineBracket(taxableIncome), taxableIncome);
+    // Show the taxable income by invoking the showResults method
+    showResults(taxableIncome, taxDue);
+    System.exit(0);
+  } // end of main method
+
+  /**
+   * shows statements that introduce the application on the output screen
+   */
+  public static void showIntroductionTax() { // ITEM 1
+    System.out.println("Hypothetical Tax Computation Program");
+    System.out.println("------------------------------------");
+    System.out.println(
+      "This program is for the computation of the tax due from a taxpayer " +
+      "with a known taxable income."
+    );
+    System.out.println();
+  } // end of showIntroduction methods
+
+  /**
+   * returns a taxable income amount read from the keyboard]
+   */
+  public static double readTaxableIncome() { // ITEM 2
+    Scanner input = new Scanner(System.in);
+    double income = 0.0;
+
+    do {
+      System.out.print("Enter the taxable income: ");
+      income = Double.parseDouble(input.nextLine());
+    } while (income < 0);
+    return income; // ITEM 3
+  } // end of readTaxableIncome method
+
+  /**
+returns the bracket corresponding to a given taxable income based on the following rule
+If taxable income is then bracket is
+<= 25,000.00 1
+> 25,000.00 but <= 125,000.00 2
+> 125,000.00 but <= 525,000.00 3
+> 525,000.00 4
+*/
+  public static int determineBracket(double taxableIncome) { // ITEM 4
+    int bracket = 0;
+    if (taxableIncome <= 25000.00) bracket = 1; else if (
+      taxableIncome <= 125000.00
+    ) bracket = 2; else if (taxableIncome <= 525000.00) bracket =
+      3; else bracket = 4;
+    return bracket;
+  } // end of determineBracket method
+
+  /**
+* returns the tax amount due corresponding to a given pair of bracket and taxable income
+based on the following rule
+If bracket of income is then tax due is
+1 4,000.00
+2 4,000.00 + 8% (taxable income - 25,000.00)
+3 12,000.00 + 10% (taxable income - 125,000.00)
+4 52,000.00 + 12% (taxable income - 525,000.00)
+*/
+  public static double computeTaxDue(int bracket, double taxableIncome) { // ITEM 5
+    double taxDue = 0.0;
+    switch (bracket) {
+      case 1:
+        taxDue = 4000.00;
+        break;
+      case 2:
+        taxDue = 4000.00 + (taxableIncome - 25000.00) * 0.08;
+        break;
+      case 3:
+        taxDue = 12000.00 + (taxableIncome - 125000.00) * 0.10;
+        break;
+      case 4:
+        taxDue = 52000.00 + (taxableIncome - 525000.00) * 0.12;
+        break;
+      default:
+        taxDue = 0.00;
+    }
+    return taxDue; // ITEM 6
+  } // end of computeTaxDue method
+
+  /**
+   * displays a given taxable income and the corresponding tax amount on the
+   * output screen
+   */
+  public static void showResults(double taxableIncome, double taxDue) { // ITEM 7
+    System.out.println();
+    System.out.printf("%-20s%15.2f%n", "Taxable Income: ", taxableIncome);
+    System.out.printf("%-20s%15.2f%n", "Tax Due = ", taxDue);
+  } // end of showResults method
 
   //--------6. Insect Population Growth Rate --------\\
   public static void insectPopulationGrowthRate() {
@@ -847,8 +956,77 @@ public class MyProgramming1Project {
       "%"
     );
   } // end of insectPopulationGrowthRate method
-  //--------7. Water Bill computaion. --------\\
 
+  //--------7. Water Bill computaion. --------\\
+  public static void waterBillComputation() {
+    int presentReading = 0, previousReading = 0;
+    Scanner kbd = new Scanner(System.in);
+    String consumer = ""; // to hold name of consumer
+    char cType = 'x'; // to hold type of consumer
+    int nCMUsed; // to hold number of cubic meters ofwater used
+    int minCMResidential = 12; // to hold cut-off for minimum Bill forresidential consumers
+    double minBillResidential = 180.00; // minimum bill for <= 12 Cubic Meters used
+    float rateResidential = 30.00F; // cost of 1 Cubic Meter above the min.consumption
+    int minCMCommercial =
+      30;/* to hold cut-off for minimum Bill for commercial consumers */
+    double minBillCommercial = 600.00; // minimum bill for <= 20Cubic Meters used
+    float rateCommercial =
+      50.00F;/* cost of 1 Cubic Meter above the min.consumption for commercial consumers */
+    double amountDue = 0.0; // to hold the amount due
+
+    System.out.print("Enter the consumer's name: ");
+    consumer = kbd.nextLine();
+    do {
+      System.out.print("Enter the meter reading last month: ");
+      previousReading = Integer.parseInt(kbd.nextLine());
+      if (previousReading < 0) {
+        System.out.println("The meter reading cannot me negative.");
+      }
+    } while (previousReading < 0);
+    // insert statements below…
+    do {
+      System.out.print("Enter the meter reading this month: ");
+      presentReading = kbd.nextInt();
+      if (presentReading < previousReading) {
+        System.out.println(
+          "The present meter reading cannot be less than the previous water meter readings"
+        );
+      }
+    } while ((presentReading < previousReading));
+
+    nCMUsed = presentReading - previousReading;
+
+    System.out.print(
+      "Enter the type of consumer you are: |c for commercial| |r for residential|: "
+    );
+    cType = kbd.next().charAt(0);
+    switch (cType) {
+      case 'c':
+      case 'C':
+        if (nCMUsed <= minCMCommercial) {
+          amountDue = minBillCommercial;
+        } else if (nCMUsed > minCMCommercial) {
+          amountDue =
+            minBillCommercial + (nCMUsed - minCMCommercial) * rateCommercial;
+        }
+        break;
+      case 'r':
+      case 'R':
+        if (nCMUsed <= minCMResidential) {
+          amountDue = minBillResidential;
+        } else if (nCMUsed > minCMResidential) {
+          amountDue =
+            minBillResidential + (nCMUsed - minCMResidential) * rateResidential;
+        }
+        break;
+    }
+    System.out.println("Bill Statement");
+    System.out.println();
+    System.out.println("Consumers Name : " + consumer);
+    System.out.println("Readings : " + nCMUsed);
+    System.out.println("Consumption : " + cType);
+    System.out.println("Amount due : " + amountDue + " Pesos");
+  }
   //--------8. Electric Bill computation. --------\\
 
   //--------9. Mobile Phone Load Balance Computation. --------\\
