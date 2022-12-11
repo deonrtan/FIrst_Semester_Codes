@@ -27,12 +27,17 @@ public class MyProgramming1Project {
 
           break;
         case 4:
-          System.out.println();
-          System.out.println("Thank you for using my program.");
-          System.out.println("Enjoy the rest of your day.");
+          showEnd();
       } // end switch
     } while (myChoice != 4);
   } // end main method
+
+  public static void showEnd() {
+    System.out.println("---------------------------------------------");
+    System.out.println("Thank you for using my program.");
+    System.out.println("Enjoy the rest of your day.");
+    System.out.println("---------------------------------------------");
+  }
 
   public static void showIntroduction() {
     System.out.println("\n\n\n");
@@ -698,7 +703,7 @@ public class MyProgramming1Project {
   //--------PRINTING THE TABLE--------\\
   private static void printTable(int[] grades, String[] students) {
     for (int i = 0; i < grades.length; i++) {
-      System.out.println(students[i] + "\t\t" + "grade : " + grades[i]);
+      System.out.println(students[i] + "\t" + "grade : " + grades[i]);
     }
     System.out.println("\n");
   }
