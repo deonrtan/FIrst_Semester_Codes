@@ -20,11 +20,9 @@ public class MyProgramming1Project {
           break;
         case 2:
           recordKeeping();
-
           break;
         case 3:
           miscellaneousProcesses();
-
           break;
         case 4:
           showEnd();
@@ -40,7 +38,7 @@ public class MyProgramming1Project {
   }
 
   public static void showIntroduction() {
-    System.out.println("\n\n\n");
+    System.out.println("\n\n");
     System.out.println("---------------------------------------------");
     System.out.println("College of Information and Computing Sciences");
     System.out.println("Saint Louis University");
@@ -793,12 +791,11 @@ public class MyProgramming1Project {
           keyboard.nextLine();
           break;
         case 8:
-          //here
+          electricBillComputation();
           System.out.println("Press enter to continue...");
           keyboard.nextLine();
           break;
         case 9:
-          //here
           System.out.println("Press enter to continue...");
           keyboard.nextLine();
           break;
@@ -1342,8 +1339,46 @@ public class MyProgramming1Project {
     System.out.println("Consumption : " + cType);
     System.out.println("Amount due : " + amountDue + " Pesos");
   }
-  //--------8. Electric Bill computation. --------\\
 
+  //--------8. Electric Bill computation. --------\\
+  public static void electricBillComputation() {
+    System.out.println("Meralco's Billing Rate (December)");
+    System.out.println("---------------------------------");
+    int presentReading = 0, previousReading = 0;
+    Scanner kbd = new Scanner(System.in);
+    String consumer = ""; // to hold name of consumer's Name
+    int kwhUsed; // to hold number of kWh used
+    float rateResidential = 9.94F; // cost of 1 kwH
+    float amountDue = 0.00F; // to hold the amount due
+
+    System.out.print("Enter the consumer's name: ");
+    consumer = kbd.nextLine();
+    do {
+      System.out.print("Enter the meter reading last month: ");
+      previousReading = Integer.parseInt(kbd.nextLine());
+      if (previousReading < 0) {
+        System.out.println("The meter reading cannot me negative.");
+      }
+    } while (previousReading < 0);
+    do {
+      System.out.print("Enter the meter reading this month: ");
+      presentReading = kbd.nextInt();
+      if (presentReading < previousReading) {
+        System.out.println(
+          "The present meter reading cannot be less than the previous kWh readings"
+        );
+      }
+    } while ((presentReading < previousReading));
+
+    kwhUsed = presentReading - previousReading;
+    amountDue = kwhUsed * rateResidential;
+
+    System.out.println("Bill Statement");
+    System.out.println();
+    System.out.println("Consumers Name \t: " + consumer);
+    System.out.println("Readings \t: " + kwhUsed);
+    System.out.println("Amount due \t: " + amountDue + " Pesos");
+  }
   //--------9. Mobile Phone Load Balance Computation. --------\\
 
 }
