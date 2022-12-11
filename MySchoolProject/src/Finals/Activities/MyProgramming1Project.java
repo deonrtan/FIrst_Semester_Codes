@@ -765,12 +765,18 @@ public class MyProgramming1Project {
           break;
         case 2:
           covid19();
+          System.out.println("Press enter to continue...");
+          keyboard.nextLine();
           break;
         case 3:
-          // TO DO
+          atmMachine();
+          System.out.println("Press enter to continue...");
+          keyboard.nextLine();
           break;
         case 4:
-          // TO DO
+          moneyInterest();
+          System.out.println("Press enter to continue...");
+          keyboard.nextLine();
           break;
         case 5:
           incomeTaxComputation();
@@ -788,10 +794,14 @@ public class MyProgramming1Project {
           keyboard.nextLine();
           break;
         case 8:
-          // TO DO
+          //here
+          System.out.println("Press enter to continue...");
+          keyboard.nextLine();
           break;
         case 9:
-          // TO DO
+          //here
+          System.out.println("Press enter to continue...");
+          keyboard.nextLine();
           break;
         case 10:
           showMainMenu();
@@ -847,9 +857,9 @@ public class MyProgramming1Project {
   //--------2. Covid19 Self-Assessment Procedure--------\\
   public static void covid19() {
     Scanner input = new Scanner(System.in);
-    String firstName, lastName, address;
-    int age, contactNumber;
-    int vaccinationCardNo, dateOfMostRecentShot, vaccinationStatus;
+    String firstName, lastName, address, contactNumber;
+    int age;
+    int vaccinationCardNo, vaccinationStatus;
     System.out.println("Enter your First Name");
     firstName = input.nextLine();
     System.out.println("Enter your Last Name");
@@ -863,8 +873,8 @@ public class MyProgramming1Project {
       }
     } while (age < 5);
 
-    System.out.println("Enter your Contact Number");
-    contactNumber = input.nextInt();
+    System.out.print("Enter your Contact Number: ");
+    contactNumber = input.nextLine();
     System.out.println("Enter your Local Address");
     address = input.nextLine();
 
@@ -875,25 +885,294 @@ public class MyProgramming1Project {
 
     switch (vaccinationStatus) {
       case 1:
-        System.out.println("Full Vaccinated");
+        System.out.println("Fully Vaccinated");
         break;
       case 2:
         System.out.println("Partially Vaccinated");
         break;
       case 3:
         System.out.println("Not Vaccinated");
+        System.out.println(
+          "Sorry you cant pass the premises, only those who are vaccinated could enter"
+        );
         break;
       default:
         System.out.println("System Error");
     }
 
-    System.out.println("Vaccination Card number.");
+    System.out.print("Vaccination Card number: ");
     vaccinationCardNo = input.nextInt();
+
+    System.out.println("Are you experiencing any of the following | <Y or N>|");
+    System.out.println(
+      "severe difficulty breathing (e.g., struggling for each breath, speaking in single words)"
+    );
+    System.out.println("severe chest pain");
+    System.out.println("having a very hard time waking up");
+    System.out.println("feeling confused");
+    System.out.println("lost consciousness");
+    char answer = input.next().charAt(0);
+    if (answer == 'Y' || answer == 'y') {
+      System.out.println(
+        "Please call 911 or go directly to your nearest emergency department."
+      );
+    } else {
+      System.out.println("You may pass");
+    }
   }
 
   //--------3. Bills distribution of an amount of Money--------\\
+  public static void atmMachine() {
+    Scanner input = new Scanner(System.in);
+    int one;
+    int five;
+    int one_thousand;
+    int get;
+    int total;
+
+    System.out.println("Enter amount to be withdrawn, whole numbers only:");
+    get = input.nextInt();
+
+    if (get < 1000) {
+      one = (get / 100) % 10;
+      five = (get / 500) / 5 % 10;
+
+      if (one >= 5) { // if the variable one is greater than 5 in the second digit use the if statement
+        one /= 5;
+        total = one + five; // total number of amount withdrawn
+        System.out.println("");
+        System.out.println("Bills Counter: ");
+        System.out.println(
+          "100 pesos :" +
+          "  Quantity Dispensed : " +
+          one +
+          " Bills, " +
+          "Amount: " +
+          one *
+          100 +
+          " Pesos"
+        );
+        System.out.println(
+          "500 pesos : " +
+          " Quantity Dispensed : " +
+          five +
+          " Bills, " +
+          "Amount: " +
+          five *
+          500 +
+          " Pesos"
+        );
+        System.out.println("");
+        System.out.println("Total No. Of bills: " + total);
+        System.out.println("");
+        System.out.println("Total Amount: " + get + " Pesos");
+      } else {
+        total = one + five;
+        System.out.println("");
+        System.out.println("Bills Counter: ");
+        System.out.println(
+          "100 pesos :" +
+          "  Quantity Dispensed : " +
+          one +
+          " Bills, " +
+          "Amount: " +
+          one *
+          100 +
+          " Pesos"
+        );
+        System.out.println(
+          "500 pesos : " +
+          " Quantity Dispensed : " +
+          five +
+          " Bills, " +
+          "Amount: " +
+          five *
+          500 +
+          " Pesos"
+        );
+        System.out.println("");
+        System.out.println("Total No. Of bills: " + total);
+        System.out.println("");
+        System.out.println("Total Amount: " + get + " Pesos");
+      }
+      //------------------------------- using if and else for the statements -------------------------------\\
+    } else if (get >= 1000) {
+      // using "%" to get the third digit of a thousand value
+      one = (get / 100) % 10;
+      five = (get / 500) / 5 % 10;
+      one_thousand = get / 1000;
+
+      //------------------------------- printing the output of the calculated variables -------------------------------\\
+      if (one >= 5) { // if the variable one is greater than 5 in the second digit use the if statement
+        one /= 5;
+        total = one + five + one_thousand; // total number of amount withdrawn
+        System.out.println("");
+        System.out.println("Bills Counter: ");
+        System.out.println(
+          "100 pesos :" +
+          "  Quantity Dispensed : " +
+          one +
+          " Bills, " +
+          "Amount: " +
+          one *
+          100 +
+          " Pesos"
+        );
+        System.out.println(
+          "500 pesos : " +
+          " Quantity Dispensed : " +
+          five +
+          " Bills, " +
+          "Amount: " +
+          five *
+          500 +
+          " Pesos"
+        );
+        System.out.println(
+          "1000 pesos : " +
+          "Quantity Dispensed : " +
+          one_thousand +
+          " Bills, " +
+          "Amount: " +
+          one_thousand *
+          1000 +
+          " Pesos"
+        );
+        System.out.println("");
+        System.out.println("Total No. Of bills: " + total);
+        System.out.println("");
+        System.out.println("Total Amount: " + get + " Pesos");
+      } else {
+        total = one + five + one_thousand; // total number of amount withdrawn
+        System.out.println("");
+        System.out.println("Bills Counter: ");
+        System.out.println(
+          "100 pesos :" +
+          "  Quantity Dispensed : " +
+          one +
+          " Bills, " +
+          "Amount: " +
+          one *
+          100 +
+          " Pesos"
+        );
+        System.out.println(
+          "500 pesos : " +
+          " Quantity Dispensed : " +
+          five +
+          " Bills, " +
+          "Amount: " +
+          five *
+          500 +
+          " Pesos"
+        );
+        System.out.println(
+          "1000 pesos : " +
+          "Quantity Dispensed : " +
+          one_thousand +
+          " Bills, " +
+          "Amount: " +
+          one_thousand *
+          1000 +
+          " Pesos"
+        );
+        System.out.println("");
+        System.out.println("Total No. Of bills: " + total);
+        System.out.println("");
+        System.out.println("Total Amount: " + get + " Pesos");
+      }
+    } else if (get >= 10000) {
+      System.out.println(
+        "The max amount of the bank is 9999, Sorry Withdraw a less amount"
+      );
+    } else {
+      System.out.println(
+        "Withdraw a number greater than 100 or less than 10000"
+      );
+    }
+  }
 
   //--------4. Interest of Money Invested--------\\
+  public static void moneyInterest() {
+    Scanner input = new Scanner(System.in);
+
+    float annualRate;
+    float quarterlyRate;
+    double principal;
+    double interest;
+    double finalAmount;
+    byte quarter;
+    int year;
+
+    annualRate = 0.05F; // set annual interest to 5%
+
+    int y = 1;
+
+    System.out.print("Enter the year: ");
+    year = input.nextInt(); // item 1
+
+    System.out.print("Enter the initial principal: ");
+    principal = input.nextDouble(); // item 2
+
+    System.out.printf("%s%.2f%n", "Principal = ", principal); // item 3
+    System.out.printf("%s%.2f%c%n", "Interest Rate = ", annualRate * 100, '%');
+    System.out.printf(
+      "%6s%8s%16s%30s%n",
+      "Year",
+      "Quarter",
+      "Interest Earned",
+      "Amount at end of quarter"
+    );
+
+    quarterlyRate = (float) (principal + annualRate) / 4; // item 4
+    quarter = 1;
+    interest = (double) (principal * annualRate) / 4; // item 5
+    finalAmount = principal + interest;
+    System.out.printf(
+      "%6s%8d%16.2f%30.2f%n",
+      year,
+      quarter,
+      interest,
+      finalAmount
+    );
+
+    principal = finalAmount;
+    quarter = 2; // item 6
+    interest = (double) (principal * annualRate) / 4; // item 7
+    finalAmount = principal + interest;
+    System.out.printf(
+      "%6s%8d%16.2f%30.2f%n",
+      year,
+      quarter,
+      interest,
+      finalAmount
+    );
+
+    principal = finalAmount;
+    quarter = 3; // item 8
+    interest = (double) (principal * annualRate) / 4; // item 9
+    finalAmount = principal + interest; // item 10
+    System.out.printf(
+      "%6s%8d%16.2f%30.2f%n",
+      year,
+      quarter,
+      interest,
+      finalAmount
+    );
+
+    principal = finalAmount; // item 11
+    quarter = 4; // item 12
+    interest = (double) (principal * annualRate) / 4; // item 13
+    finalAmount = principal + interest; // item 14
+    System.out.printf(
+      "%6s%8d%16.2f%30.2f%n",
+      year,
+      quarter,
+      interest,
+      finalAmount
+    );
+    System.exit(0);
+  }
 
   //--------5. Income Tax Computation--------\\
   public static void incomeTaxComputation() {
@@ -1067,8 +1346,6 @@ public class MyProgramming1Project {
   //--------8. Electric Bill computation. --------\\
 
   //--------9. Mobile Phone Load Balance Computation. --------\\
-
-  //--------10. Back to Main Menu --------\\
 
 }
 /*
