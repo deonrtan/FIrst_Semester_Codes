@@ -703,7 +703,7 @@ public class MyProgramming1Project {
           keyboard.nextLine();
           break;
         case 2:
-          // TO DO
+          covid19();
           break;
         case 3:
           // TO DO
@@ -718,11 +718,8 @@ public class MyProgramming1Project {
           break;
         case 6:
           insectPopulationGrowthRate();
-
           System.out.println("Press enter to continue...");
-
           keyboard.nextLine();
-
           break;
         case 7:
           waterBillComputation();
@@ -793,25 +790,28 @@ public class MyProgramming1Project {
     int age, contactNumber;
     int vaccinationCardNo, dateOfMostRecentShot, vaccinationStatus;
     System.out.println("Enter your First Name");
-    firstName = input.next();
+    firstName = input.nextLine();
     System.out.println("Enter your Last Name");
-    lastName = input.next();
+    lastName = input.nextLine();
 
     do {
       System.out.println("Enter your age");
       age = input.nextInt();
-      if (age <= 5) {
+      if (age < 5) {
         System.out.println("You should be at least 5 years old to register.");
       }
-    } while (age <= 5);
+    } while (age < 5);
 
     System.out.println("Enter your Contact Number");
     contactNumber = input.nextInt();
     System.out.println("Enter your Local Address");
-    address = input.next();
+    address = input.nextLine();
 
-    System.out.println("Vaccination Status");
+    System.out.println(
+      "Your Vaccination Status | 1(Full Vaccinated) | 2(Partially Vaccinated) | 3(Not Vaccinated)"
+    );
     vaccinationStatus = input.nextInt();
+
     switch (vaccinationStatus) {
       case 1:
         System.out.println("Full Vaccinated");
@@ -822,7 +822,10 @@ public class MyProgramming1Project {
       case 3:
         System.out.println("Not Vaccinated");
         break;
+      default:
+        System.out.println("System Error");
     }
+
     System.out.println("Vaccination Card number.");
     vaccinationCardNo = input.nextInt();
   }
@@ -851,7 +854,7 @@ public class MyProgramming1Project {
   /**
    * shows statements that introduce the application on the output screen
    */
-  public static void showIntroductionTax() { // ITEM 1
+  public static void showIntroductionTax() {
     System.out.println("Hypothetical Tax Computation Program");
     System.out.println("------------------------------------");
     System.out.println(
@@ -864,7 +867,7 @@ public class MyProgramming1Project {
   /**
    * returns a taxable income amount read from the keyboard]
    */
-  public static double readTaxableIncome() { // ITEM 2
+  public static double readTaxableIncome() {
     Scanner input = new Scanner(System.in);
     double income = 0.0;
 
@@ -872,7 +875,7 @@ public class MyProgramming1Project {
       System.out.print("Enter the taxable income: ");
       income = Double.parseDouble(input.nextLine());
     } while (income < 0);
-    return income; // ITEM 3
+    return income;
   } // end of readTaxableIncome method
 
   /**
