@@ -27,6 +27,7 @@ public class MyProgramming1Project {
 
           break;
         case 4:
+          System.out.println();
           System.out.println("Thank you for using my program.");
           System.out.println("Enjoy the rest of your day.");
       } // end switch
@@ -575,6 +576,9 @@ public class MyProgramming1Project {
           kbd.nextLine();
           break;
         case 3:
+          sortNames();
+          System.out.print("Press enter to continue...");
+          kbd.nextLine();
           break;
         case 4:
           sortGrade();
@@ -634,8 +638,47 @@ public class MyProgramming1Project {
   }
 
   //--------3. Accept pairs of names and grades and sort list according to name--------\\
+  public static void sortNames() {
+    Scanner input = new Scanner(System.in);
+    int[] grade;
+    int[] number;
+    String[] student;
+
+    int n = 0;
+    System.out.println("Input the number of students");
+    n = input.nextInt();
+    number = new int[n];
+    grade = new int[n];
+    student = new String[n];
+    StudentNameGradeInput(student, grade, number);
+    balloonSortName(student, grade);
+  }
+
+  public static void balloonSortName(String[] x, int[] y) {
+    String temp;
+    int swap = 0;
+    int n = x.length;
+
+    for (int j = 0; j < n - 1; j++) {
+      for (int i = j + 1; i < n; i++) {
+        if (x[j].compareTo(x[i]) > 0) {
+          temp = x[j];
+          x[j] = x[i];
+          x[i] = temp;
+          swap = 1;
+        }
+        if (swap == 1) {
+          System.out.println();
+          System.out.println("Sorted");
+          printTable(y, x);
+          break;
+        }
+      }
+    }
+  }
 
   //--------4. Accept pairs of names and grades and sort list according to " +"grade"--------\\
+
   public static void sortGrade() {
     Scanner input = new Scanner(System.in);
     int[] grade;
@@ -649,13 +692,13 @@ public class MyProgramming1Project {
     grade = new int[n];
     student = new String[n];
     StudentNameGradeInput(student, grade, number);
-    balloonSortGrade(grade, n, student);
+    balloonSortGrade(grade, student);
   }
 
   //--------PRINTING THE TABLE--------\\
   private static void printTable(int[] grades, String[] students) {
     for (int i = 0; i < grades.length; i++) {
-      System.out.println(students[i] + "\t" + "grade : " + grades[i]);
+      System.out.println(students[i] + "\t\t" + "grade : " + grades[i]);
     }
     System.out.println("\n");
   }
@@ -678,14 +721,17 @@ public class MyProgramming1Project {
   }
 
   //--------SORTING THE GRADE--------\\
-  public static void balloonSortGrade(int a[], int n, String[] x) {
+  public static void balloonSortGrade(int a[], String[] x) {
+    int n = a.length;
+    int temp = 0;
     for (int i = 0; i < n; i++) {
       int swap = 0;
-      for (int j = 0; j < n - i; j++) {
-        if (a[i] > a[i + j]) {
-          int temp = a[i];
-          a[i] = a[i + j];
-          a[i + j] = temp;
+
+      for (int j = 0; j < n - i - 1; j++) {
+        if (a[j] > a[j + 1]) {
+          temp = a[j];
+          a[j] = a[j + 1];
+          a[j + 1] = temp;
           swap = 1;
         }
       }
