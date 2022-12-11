@@ -37,6 +37,7 @@ public class MyProgramming1Project {
     System.out.println("Enjoy the rest of your day.");
     System.out.println("----------------------------");
     System.out.println();
+    System.exit(0);
   }
 
   public static void showIntroduction() {
@@ -918,6 +919,7 @@ public class MyProgramming1Project {
         System.out.println(
           "Sorry you cant pass the premises, only those who are vaccinated could enter"
         );
+        System.exit(0);
         break;
       default:
         System.out.println("System Error");
@@ -1437,91 +1439,3 @@ public class MyProgramming1Project {
     System.out.println("Your Present Balance is : " + presentBalance);
   }
 }
-/*
- * Some basic algorithms:
- * 1. Linear Search(Search an item in a given list)
- * Search an item from a list by starting from the first element, then second,
- * then third an so
- * on.
- * - Check if the first element is the item you are searching.
- * If the first element is the same as the item being searched, stop and report
- * that the item
- * is found. Otherwise, check if the second element is the item you are
- * searching.
- * If the second item is the same as the item being searched, stop and report
- * that the item is
- * found. Otherwise, check if the third element is the same as the item being
- * search...
- * 2. Balloon Sort (Arrange the elements of a list)
- * a. Determine which element should be in the first position:
- * Swap the first element and the second element if needed.
- * Then, swap the current first element and the third element if needed.
- * Then, swap the current first element and the fourth element if needed.
- * ... Repeat the process until the last element is reached.
- * By then, the first element of the list is positioned correctly.
- * b. Determine which element should be in the second position:
- * Swap the second element and the third element if needed.
- * Swap the current second element and the fourth element if needed.
- * .... Repeat the process until the last element is reach.
- * By then, the second element of the list is positioned correctly.
- * ...and so on
- *
- * 3. Selection Sort (Arrange the elements of a list)
- * select a value and put it in its final place into the list
- * repeat for all other values
- * In more detail:
- * find the smallest value in the list
- * switch it with the value in the first position
- * find the next smallest value in the list
- * switch it with the value in the second position
- * repeat until all values are in their proper places
- * Swapping is the process of exchanging two values. Swapping may be a
- * subprocess of the sorting
- * process.
- * Essentially, swapping requires three assignment statements
- * temp = first;
- * first = second;
- * second = temp;
- * In some cases, it is important to keep the original array. A problem/issue in
- * programming
- * theory, which is called side-effect, is the result of modifying the value of
- * a variable (e.g. an
- * array variable). Side-effect is an issue because another module of the
- * program may be using the
- * variable(e.g. the array) under the assumption that the value of the
- * variable(e.g. the elements
- * of the array) is/are in some original form. When the value of the variable is
- * modified, the
- * other module may fail in its purpose.
- * If sorting must be done with an array, create a copy of the array and it is
- * the copy that you
- * should modify. To facility the process of sorting arrays when there is a need
- * to keep the
- *
- * original array, a method for making a copy of an array may help. The
- * following methods are
- * examples of methods for copying arrays.
- * 4. Binary Search (Search an item in a given list)
- * Assume that the list is sorted in ascending order, start the search at the
- * middle cell.
- * If the middle element is the one you are looking for, stop and declare that
- * the item is found.
- * Otherwise, drop half of the list by comparing the item being searched with
- * the middle
- * element.
- * If the middle element is greater than the item being search, this means the
- * item being
- * search could be at the left of the middle element.
- * Then, do the search in the first half of the list (forget about the second
- * half)
- * If the middle element is less than the item being search, this means the item
- * being search
- * could be at the right of the middle element.
- * Then, do the search in the second half of the list (forget about the first
- * half)
- * Again, start the search at the middle cell of the list that remained after
- * dropping half of the
- * list. Do the process repeatedly until the item is found or until there is no
- * more list to be
- * halved.
- */
