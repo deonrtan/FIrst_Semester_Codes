@@ -1434,7 +1434,7 @@ public class MyProgramming1Project {
       }
     } while (balance < balanceUsed);
 
-    presentBalance = balanceUsed - balance;
+    presentBalance = balance - balanceUsed;
     System.out.println("Name : " + Name);
     System.out.println("Your Present Balance is : " + presentBalance);
   }
