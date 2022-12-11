@@ -139,7 +139,6 @@ public class MyProgramming1Project {
   public static void mathSolver() {
     Scanner kbd = new Scanner(System.in);
     int choice = 0;
-    boolean invoke = true;
     do {
       showMenu1();
       choice = enterChoice(1, 16);
