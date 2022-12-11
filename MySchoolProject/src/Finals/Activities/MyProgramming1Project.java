@@ -649,16 +649,18 @@ public class MyProgramming1Project {
     grade = new int[n];
     student = new String[n];
     StudentNameGradeInput(student, grade, number);
-    balloonSortGrade(student, grade, n);
+    balloonSortGrade(grade, n, student);
   }
 
+  //--------PRINTING THE TABLE--------\\
   private static void printTable(int[] grades, String[] students) {
-    for (int i = 0; i < students.length; i++) {
-      System.out.println(students[i] + " : " + "grade : " + grades[i]);
+    for (int i = 0; i < grades.length; i++) {
+      System.out.println(students[i] + "\t" + "grade : " + grades[i]);
     }
     System.out.println("\n");
   }
 
+  //--------GETTING INPUT FROM THE USER ABOUT THEIR NAME AND GRADES--------\\
   private static void StudentNameGradeInput(
     String[] student,
     int[] grade,
@@ -675,16 +677,24 @@ public class MyProgramming1Project {
     }
   }
 
-  public static void balloonSortGrade(String b[], int a[], int n) {
-    for (int i = 0; i < a.length; i++) {
-      for (int j = 0; j < n - i - 1; j++) {
+  //--------SORTING THE GRADE--------\\
+  public static void balloonSortGrade(int a[], int n, String[] x) {
+    for (int i = 0; i < n; i++) {
+      int swap = 0;
+      for (int j = 0; j < n - i; j++) {
         if (a[i] > a[i + j]) {
           int temp = a[i];
           a[i] = a[i + j];
           a[i + j] = temp;
+          swap = 1;
         }
       }
-      printTable(a, b);
+      if (swap == 1) {
+        System.out.println();
+        System.out.println("Sorted");
+        printTable(a, x);
+        break;
+      }
     }
   }
 
