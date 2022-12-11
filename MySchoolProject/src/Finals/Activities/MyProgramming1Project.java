@@ -336,7 +336,6 @@ public class MyProgramming1Project {
     } while (choice != 16);
   } // end of mathSolver method
 
-
   //------------------------------ MATH ROUTINES FUNCTION ------------------------------\\
   //1. determine whether an integer is an odd or even \\
   public static String detOddEven(int number) {
@@ -437,7 +436,7 @@ public class MyProgramming1Project {
 
   //--------11. Determine if an integer is a perfect number--------\\\
   // method that returns true if a number f is a factor of a number n
-  public static boolean isFactor(int f, int n) { // ITEM 1
+  public static boolean isFactor(int f, int n) {
     if (n % f == 0) return true; else return false; // n divided by f yields a 0 remainder
   }
 
@@ -464,13 +463,13 @@ public class MyProgramming1Project {
     int n;
     do {
       System.out.print("Input an integer between 1 and " + limit + " : ");
-      n = keyboard.nextInt(); // ITEM 4
+      n = keyboard.nextInt();
       if (n < 1 || n >= limit) {
         System.out.println(
           "You did not enter a number between 1 and " + limit + "."
         );
       }
-    } while (n < 1 || n >= limit); // ITEM 5
+    } while (n < 1 || n >= limit);
     return n;
   }
 
@@ -576,10 +575,11 @@ public class MyProgramming1Project {
           kbd.nextLine();
           break;
         case 3:
-          // TO DO
           break;
         case 4:
-          // TO DO
+          sortGrade();
+          System.out.print("Press enter to continue...");
+          kbd.nextLine();
           break;
       } // end of cases
     } while (choice != 5);
@@ -638,20 +638,50 @@ public class MyProgramming1Project {
   //--------4. Accept pairs of names and grades and sort list according to " +"grade"--------\\
   public static void sortGrade() {
     Scanner input = new Scanner(System.in);
-    int length;
-    int grade;
-    String students;
+    int[] grade;
+    int[] number;
+    String[] student;
 
-    System.out.println("Input the number of the students");
-    length = input.nextInt();
+    int n = 0;
+    System.out.println("Input the number of students");
+    n = input.nextInt();
+    number = new int[n];
+    grade = new int[n];
+    student = new String[n];
 
-    int number[] = new int[length];
     for (int i = 0; i < number.length; i++) {
       System.out.println("enter the name of student " + (i + 1));
-      number[i] = input.nextInt();
+      student[i] = input.nextLine();
+    }
+    for (int j = 0; j < number.length; j++) {
+      System.out.println("Enter the grade of student " + (j + 1));
+      grade[j] = input.nextInt();
+    }
+
+    balloonSortGrade(student, grade, n);
+  }
+
+  private static void printTable(int[] grades, String[] students) {
+    for (int i = 0; i < students.length; i++) {
+      System.out.print(students[i] + " : " + "grade : " + grades[i]);
+    }
+    System.out.println("\n");
+  }
+
+  public static void balloonSortGrade(String b[], int a[], int n) {
+    for (int i = 0; i < a.length; i++) {
+      for (int j = 0; j < n - i - 1; j++) {
+        if (a[i] > a[i + j]) {
+          int temp = a[i];
+          a[i] = a[i + j];
+          a[i + j] = temp;
+        }
+      }
+      printTable(a, b);
     }
   }
 
+  //--------4. Accept pairs of names and grades and sort list according to " +"grade"--------\\
   public static void miscellaneousProcesses() {
     Scanner keyboard = new Scanner(System.in);
     int choice = 0;
