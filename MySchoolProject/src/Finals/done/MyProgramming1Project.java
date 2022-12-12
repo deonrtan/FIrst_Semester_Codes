@@ -1134,12 +1134,12 @@ public class MyProgramming1Project {
     int y = 1;
 
     System.out.print("Enter the year: ");
-    year = input.nextInt(); // item 1
+    year = input.nextInt();
 
     System.out.print("Enter the initial principal: ");
-    principal = input.nextDouble(); // item 2
+    principal = input.nextDouble();
 
-    System.out.printf("%s%.2f%n", "Principal = ", principal); // item 3
+    System.out.printf("%s%.2f%n", "Principal = ", principal);
     System.out.printf("%s%.2f%c%n", "Interest Rate = ", annualRate * 100, '%');
     System.out.printf(
       "%6s%8s%16s%30s%n",
@@ -1149,9 +1149,9 @@ public class MyProgramming1Project {
       "Amount at end of quarter"
     );
 
-    quarterlyRate = (float) (principal + annualRate) / 4; // item 4
+    quarterlyRate = (float) (principal + annualRate) / 4;
     quarter = 1;
-    interest = (double) (principal * annualRate) / 4; // item 5
+    interest = (double) (principal * annualRate) / 4;
     finalAmount = principal + interest;
     System.out.printf(
       "%6s%8d%16.2f%30.2f%n",
@@ -1162,8 +1162,8 @@ public class MyProgramming1Project {
     );
 
     principal = finalAmount;
-    quarter = 2; // item 6
-    interest = (double) (principal * annualRate) / 4; // item 7
+    quarter = 2;
+    interest = (double) (principal * annualRate) / 4;
     finalAmount = principal + interest;
     System.out.printf(
       "%6s%8d%16.2f%30.2f%n",
@@ -1175,8 +1175,8 @@ public class MyProgramming1Project {
 
     principal = finalAmount;
     quarter = 3; // item 8
-    interest = (double) (principal * annualRate) / 4; // item 9
-    finalAmount = principal + interest; // item 10
+    interest = (double) (principal * annualRate) / 4;
+    finalAmount = principal + interest;
     System.out.printf(
       "%6s%8d%16.2f%30.2f%n",
       year,
@@ -1185,10 +1185,10 @@ public class MyProgramming1Project {
       finalAmount
     );
 
-    principal = finalAmount; // item 11
-    quarter = 4; // item 12
-    interest = (double) (principal * annualRate) / 4; // item 13
-    finalAmount = principal + interest; // item 14
+    principal = finalAmount;
+    quarter = 4;
+    interest = (double) (principal * annualRate) / 4;
+    finalAmount = principal + interest;
     System.out.printf(
       "%6s%8d%16.2f%30.2f%n",
       year,
