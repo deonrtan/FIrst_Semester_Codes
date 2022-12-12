@@ -1,5 +1,15 @@
 package Finals.Activities;
 
+/*
+ * Required:
+Encode, debug if needed, test and trace the following programs (Program A and Program B). Modify Program
+B by implementing the Selection Sort algorithm instead of the Balloon Sort algorithm.
+Program A: Program with only the main methods
+
+* A program that creates a class record. The names, quiz scores, exam scores, quiz grades, exam
+* grades and subject grades are stored by parallel arrays.
+ */
+
 import java.lang.*;
 import java.util.Scanner;
 
@@ -176,14 +186,3 @@ public class GradeCalculatorUsingArrays {
     System.exit(0);
   } // end of the main method
 } // end of class
-/*
-Program B:
-Program with
-methods aside
-from the
-
-main method (Program Decomposition is applied)
-/**
-* A program that creates a class record. The names, quiz scores, exam scores,
-* quiz grades, exam grades and subject grades are stored by parallel arrays.
-**/

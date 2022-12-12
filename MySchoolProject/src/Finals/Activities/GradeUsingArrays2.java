@@ -1,5 +1,11 @@
 package Finals.Activities;
 
+/*
+ * Program B: Program with methods aside from the main method (Program Decomposition is applied)
+ * A program that creates a class record. The names, quiz scores, exam scores,
+ * quiz grades, exam grades and subject grades are stored by parallel arrays.
+ */
+
 import java.lang.*;
 import java.util.Arrays;
 import java.util.Scanner;
