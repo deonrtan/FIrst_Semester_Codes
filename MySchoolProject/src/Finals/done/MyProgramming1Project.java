@@ -595,21 +595,41 @@ public class MyProgramming1Project {
       choice = enterChoice(1, 5);
       switch (choice) {
         case 1:
+          System.out.println();
+          System.out.println("-----------------------------------------------");
+          System.out.println("Accept and sort list of students");
+          System.out.println("-----------------------------------------------");
           acceptAndSortNames();
           System.out.print("Press enter to continue...");
           kbd.nextLine();
           break;
         case 2:
+          System.out.println();
+          System.out.println("-----------------------------------------------");
+          System.out.println("Accept and sort list of salesman");
+          System.out.println("-----------------------------------------------");
           acceptAndSortNamesSalesMan();
           System.out.print("Press enter to continue...");
           kbd.nextLine();
           break;
         case 3:
+          System.out.println();
+          System.out.println("-----------------------------------------------");
+          System.out.println(
+            "To Pair Names and Grades, and Sort According to Name"
+          );
+          System.out.println("-----------------------------------------------");
           sortNames();
           System.out.print("Press enter to continue...");
           kbd.nextLine();
           break;
         case 4:
+          System.out.println();
+          System.out.println("-----------------------------------------------");
+          System.out.println(
+            "To Pair Names and Grades, and Sort According to Name"
+          );
+          System.out.println("-----------------------------------------------");
           sortGrade();
           System.out.print("Press enter to continue...");
           kbd.nextLine();
@@ -624,6 +644,31 @@ public class MyProgramming1Project {
       System.out.println("Student " + (x + 1) + ": " + array[x]);
     }
     System.out.println();
+  }
+
+  //--------PRINTING THE TABLE--------\\
+  private static void printTable(int[] grades, String[] students) {
+    for (int i = 0; i < grades.length; i++) {
+      System.out.println(students[i] + "\t" + "grade : " + grades[i]);
+    }
+    System.out.println("\n");
+  }
+
+  //--------GETTING INPUT FROM THE USER ABOUT THEIR NAME AND GRADES--------\\
+  private static void StudentNameGradeInput(
+    String[] student,
+    int[] grade,
+    int[] number
+  ) {
+    Scanner input = new Scanner(System.in);
+    for (int i = 0; i < number.length; i++) {
+      System.out.println("enter the name of student " + (i + 1));
+      student[i] = input.nextLine();
+    }
+    for (int j = 0; j < number.length; j++) {
+      System.out.println("Enter the grade of student " + (j + 1));
+      grade[j] = input.nextInt();
+    }
   }
 
   //--------1. Accept and sort list of students--------\\
@@ -680,30 +725,35 @@ public class MyProgramming1Project {
     grade = new int[n];
     student = new String[n];
     StudentNameGradeInput(student, grade, number);
-    balloonSortName(student, grade);
+    bubbleSortName(student, grade);
   }
 
-  public static void balloonSortName(String[] x, int[] y) {
-    String temp;
+  public static void bubbleSortName(String[] x, int[] y) {
+    int n = y.length;
     int swap = 0;
-    int n = x.length;
 
+    // Sorting strings using bubble sort
     for (int j = 0; j < n - 1; j++) {
       for (int i = j + 1; i < n; i++) {
         if (x[j].compareTo(x[i]) > 0) {
-          temp = x[j];
-          x[j] = x[i];
-          x[i] = temp;
+          swapName(i, j, x);
           swap = 1;
         }
-        if (swap == 1) {
-          System.out.println();
-          System.out.println("Sorted");
-          printTable(y, x);
-          break;
-        }
+      }
+      if (swap == 1) {
+        System.out.println();
+        System.out.println("Sorted");
+        printTable(y, x);
+        break;
       }
     }
+  }
+
+  public static void swapName(int i, int j, String[] array) {
+    String temp;
+    temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
   }
 
   //--------4. Accept pairs of names and grades and sort list according to " +"grade"--------\\
@@ -721,46 +771,20 @@ public class MyProgramming1Project {
     grade = new int[n];
     student = new String[n];
     StudentNameGradeInput(student, grade, number);
-    balloonSortGrade(grade, student);
-  }
-
-  //--------PRINTING THE TABLE--------\\
-  private static void printTable(int[] grades, String[] students) {
-    for (int i = 0; i < grades.length; i++) {
-      System.out.println(students[i] + "\t" + "grade : " + grades[i]);
-    }
-    System.out.println("\n");
-  }
-
-  //--------GETTING INPUT FROM THE USER ABOUT THEIR NAME AND GRADES--------\\
-  private static void StudentNameGradeInput(
-    String[] student,
-    int[] grade,
-    int[] number
-  ) {
-    Scanner input = new Scanner(System.in);
-    for (int i = 0; i < number.length; i++) {
-      System.out.println("enter the name of student " + (i + 1));
-      student[i] = input.nextLine();
-    }
-    for (int j = 0; j < number.length; j++) {
-      System.out.println("Enter the grade of student " + (j + 1));
-      grade[j] = input.nextInt();
-    }
+    bubbleSortGrade(grade, student);
   }
 
   //--------SORTING THE GRADE--------\\
-  public static void balloonSortGrade(int a[], String[] x) {
+  public static void bubbleSortGrade(int[] a, String[] x) {
     int n = a.length;
-    int temp = 0;
-    for (int i = 0; i < n; i++) {
+    int k;
+    for (int i = n; i >= 0; i--) {
       int swap = 0;
 
-      for (int j = 0; j < n - i - 1; j++) {
-        if (a[j] > a[j + 1]) {
-          temp = a[j];
-          a[j] = a[j + 1];
-          a[j + 1] = temp;
+      for (int j = 0; j < n - 1; j++) {
+        k = j + 1;
+        if (a[j] > a[k]) {
+          swapNumbers(j, k, a);
           swap = 1;
         }
       }
@@ -773,7 +797,14 @@ public class MyProgramming1Project {
     }
   }
 
-  //--------4. Accept pairs of names and grades and sort list according to " +"grade"--------\\
+  public static void swapNumbers(int i, int j, int[] array) {
+    int temp;
+    temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+
+  //--------Miscellaneous Menu--------\\
   public static void miscellaneousProcesses() {
     Scanner keyboard = new Scanner(System.in);
     int choice = 0;
@@ -828,12 +859,13 @@ public class MyProgramming1Project {
           keyboard.nextLine();
           break;
         case 10:
+          //I love you valerie
           showMainMenu();
       } // end of cases
     } while (choice != 10);
   } // end of miscellaneousProcesses method
 
-  //--------------- Miscellenous ---------------\\
+  //--------------- Miscellenous Methods ---------------\\
   //--------1. Number Guessing Game --------\\
   public static void higherOrLower() {
     Scanner keyboard = new Scanner(System.in);
@@ -898,9 +930,9 @@ public class MyProgramming1Project {
     } while (age < 5);
 
     System.out.print("Enter your Contact Number: ");
-    contactNumber = input.nextLine();
-    System.out.println("Enter your Local Address");
-    address = input.nextLine();
+    contactNumber = input.next();
+    System.out.print("Enter your Local Address: ");
+    address = input.next();
 
     System.out.println(
       "Your Vaccination Status | 1(Full Vaccinated) | 2(Partially Vaccinated) | 3(Not Vaccinated)"
@@ -959,8 +991,8 @@ public class MyProgramming1Project {
     get = input.nextInt();
 
     if (get < 1000) {
-      one = (get / 100) % 10;
-      five = (get / 500) / 5 % 10;
+      one = ((get % 1000) % 500) / 100;
+      five = (get % 1000) / 500;
 
       if (one >= 5) { // if the variable one is greater than 5 in the second digit use the if statement
         one /= 5;
@@ -1023,8 +1055,8 @@ public class MyProgramming1Project {
       //------------------------------- using if and else for the statements -------------------------------\\
     } else if (get >= 1000) {
       // using "%" to get the third digit of a thousand value
-      one = (get / 100) % 10;
-      five = (get / 500) / 5 % 10;
+      one = ((get % 1000) % 500) / 100;
+      five = (get % 1000) / 500;
       one_thousand = get / 1000;
 
       //------------------------------- printing the output of the calculated variables -------------------------------\\
