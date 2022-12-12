@@ -30,6 +30,27 @@ public class MyProgramming1Project {
     } while (myChoice != 4);
   } // end main method
 
+  public static void CallingCard() {
+    String name = "Tan, Deon R.";
+    String cp = "09695128980";
+    String email = "deonroblestan@gmail.com";
+    String address = "Aurora Hill";
+
+    System.out.println("*****************************************************");
+    System.out.println("*                 My Calling Card                   *");
+    System.out.println("*                                                   *");
+    System.out.println("* Programmer       : " + name + "                   *");
+    System.out.println("* Cellphone Number : " + cp + "                    *");
+    System.out.println("* Email Address    : " + email + "        *");
+    System.out.println(
+      "* Address          : " + address + "                    *"
+    );
+    System.out.println("*                                                   *");
+    System.out.println("*                                                   *");
+    System.out.println("*****************************************************");
+    System.exit(0);
+  }
+
   public static void showEnd() {
     System.out.println();
     System.out.println("----------------------------");
@@ -37,6 +58,7 @@ public class MyProgramming1Project {
     System.out.println("Enjoy the rest of your day.");
     System.out.println("----------------------------");
     System.out.println();
+    CallingCard();
     System.exit(0);
   }
 
@@ -48,6 +70,7 @@ public class MyProgramming1Project {
     System.out.println("Baguio City ");
     System.out.println("---------------------------------------------");
     System.out.println(" Deon Robles Tan ");
+    System.out.println(" Computer Science Student");
     System.out.println(" Programmer");
     System.out.println("---------------------------------------------");
     System.out.print("Please press a key to see Main Menu...");
