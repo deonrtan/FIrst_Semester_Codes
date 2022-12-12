@@ -135,6 +135,24 @@ public class MyProgramming1Project {
     return (choice);
   }
 
+  public static int inputPositive() {
+    Scanner keyboard = new Scanner(System.in);
+    int value;
+
+    System.out.println();
+
+    do {
+      value = Integer.parseInt(keyboard.nextLine());
+
+      if (value <= 0) {
+        System.out.println("Invalid input. Must be a positive integer");
+        System.out.print("Please enter a valid value: ");
+      }
+    } while (value <= 0);
+
+    return value;
+  } // end of inputPositive method
+
   //-----------------------END OF CHOICE-----------------------\\
 
   public static void mathSolver() {
@@ -813,49 +831,128 @@ public class MyProgramming1Project {
       choice = enterChoice(1, 10);
       switch (choice) {
         case 1:
+          System.out.println();
+          System.out.println("-----------------------------------------------");
+          System.out.println("Welcome to Number Guessing Game");
+          System.out.println("-----------------------------------------------");
+          acceptAndSortNames();
           higherOrLower();
           System.out.println();
           System.out.print("press enter to continue...");
           keyboard.nextLine();
           break;
         case 2:
+          System.out.println();
+          System.out.println("-----------------------------------------------");
+          System.out.println("Welcome to Covid19 Self-Assesment Procedure");
+          System.out.println("-----------------------------------------------");
+          acceptAndSortNames();
           covid19();
           System.out.println("Press enter to continue...");
           keyboard.nextLine();
           break;
         case 3:
+          System.out.println();
+          System.out.println("-----------------------------------------------");
+          System.out.println(
+            "Welcome to Bills distribution of an amount of money"
+          );
+          System.out.println("-----------------------------------------------");
+          acceptAndSortNames();
           atmMachine();
           System.out.println("Press enter to continue...");
           keyboard.nextLine();
           break;
         case 4:
+          System.out.println();
+          System.out.println("-----------------------------------------------");
+          System.out.println("Welcome to Interest of Money Invested");
+          System.out.println("-----------------------------------------------");
+          acceptAndSortNames();
           moneyInterest();
           System.out.println("Press enter to continue...");
           keyboard.nextLine();
           break;
         case 5:
+          System.out.println();
+          System.out.println("-----------------------------------------------");
+          System.out.println("Welcome to Income Tax Computation");
+          System.out.println("-----------------------------------------------");
+          acceptAndSortNames();
           incomeTaxComputation();
           System.out.println("Press enter to continue...");
           keyboard.nextLine();
           break;
         case 6:
+          System.out.println();
+          System.out.println("-----------------------------------------------");
+          System.out.println("Welcome to Inspect Population Growth Rate");
+          System.out.println("-----------------------------------------------");
+          acceptAndSortNames();
           insectPopulationGrowthRate();
           System.out.println("Press enter to continue...");
           keyboard.nextLine();
           break;
         case 7:
+          System.out.println();
+          System.out.println("-----------------------------------------------");
+          System.out.println("Welcome to Water Bill Computation");
+          System.out.println("-----------------------------------------------");
+          acceptAndSortNames();
           waterBillComputation();
           System.out.println("Press enter to continue...");
           keyboard.nextLine();
           break;
         case 8:
+          System.out.println();
+          System.out.println("-----------------------------------------------");
+          System.out.println("Welcome to Electric Bill Computation");
+          System.out.println("-----------------------------------------------");
+          acceptAndSortNames();
           electricBillComputation();
           System.out.println("Press enter to continue...");
           keyboard.nextLine();
           break;
         case 9:
-          loadBalanceComputation();
+          System.out.println();
+          System.out.println("-----------------------------------------------");
+          System.out.println("Welcome to Mobile Phone Load Computation");
+          System.out.println("-----------------------------------------------");
+          acceptAndSortNames();
+          char operation;
+
+          System.out.println("Enter your name");
+          String user = keyboard.nextLine();
+          System.out.print("Enter your prepaid load balance: ");
+          int prepaidLoad = inputPositive();
+
+          do {
+            System.out.print("Enter 'c' if you called or 't' if you texted: ");
+            operation = keyboard.next().charAt(0);
+
+            if (
+              operation != 'c' &&
+              operation != 'C' &&
+              operation != 't' &&
+              operation != 'T'
+            ) {
+              System.out.println(
+                "Invalid input! Not included in the two options."
+              );
+              System.out.println();
+            }
+          } while (
+            operation != 'c' &&
+            operation != 'C' &&
+            operation != 't' &&
+            operation != 'T'
+          );
+
+          loadBalanceCalculator(user, prepaidLoad, operation);
+
+          System.out.println();
           System.out.println("Press enter to continue...");
+          keyboard.nextLine();
           keyboard.nextLine();
           break;
         case 10:
@@ -1442,32 +1539,45 @@ public class MyProgramming1Project {
   }
 
   //--------9. Mobile Phone Load Balance Computation. --------\\
-  public static void loadBalanceComputation() {
-    Scanner input = new Scanner(System.in);
-    String Name;
-    int balance, balanceUsed, presentBalance;
+  public static void loadBalanceCalculator(
+    String user,
+    double balance,
+    char operationType
+  ) {
+    int callDuration;
+    int sentMessages;
+    float ratePerMinute = 3.00F;
+    float ratePerSent = 10.00F;
+    double amountDue = 0.0;
+    double remainingBalance;
 
-    System.out.print("Enter Your Name: ");
-    Name = input.nextLine();
+    String classification = "";
 
-    System.out.println("What is your current balance? ");
-    balance = input.nextInt();
+    //for classification
+    if (operationType == 'c' || operationType == 'C') {
+      classification = "Calls";
+    } else if (operationType == 't' || operationType == 'T') {
+      classification = "Texts";
+    }
 
-    do {
-      System.out.print(
-        "How much load balance did you consumed this past few days or weeks? : "
-      );
-      balanceUsed = input.nextInt();
-      if (balance < balanceUsed) {
-        System.out.println(
-          "load consumed must not be greater than the actual balance"
-        );
-        System.out.println();
-      }
-    } while (balance < balanceUsed);
+    switch (operationType) {
+      case 'c':
+      case 'C':
+        System.out.println("How long did your call lasted?");
+        System.out.print("Enter the Number of Minutes used for calls: ");
+        callDuration = inputPositive();
+        amountDue = callDuration * ratePerMinute;
 
-    presentBalance = balance - balanceUsed;
-    System.out.println("Name : " + Name);
-    System.out.println("Your Present Balance is : " + presentBalance);
+        break;
+      case 't':
+      case 'T':
+        System.out.println("How many messages did you send?");
+        System.out.print("Enter the Number of Messages sent: ");
+        sentMessages = inputPositive();
+        amountDue = sentMessages * ratePerSent;
+
+        break;
+    }
+    remainingBalance = balance - amountDue;
   }
 }
