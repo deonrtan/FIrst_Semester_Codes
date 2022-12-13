@@ -1,4 +1,4 @@
-package Finals.done;
+package Finals.Activities;
 
 import java.util.Arrays;
 import java.util.Scanner;
